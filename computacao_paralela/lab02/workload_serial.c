@@ -3,6 +3,11 @@
 #include <time.h>
 #include <math.h>
 
+
+//paralelizar este código
+//comando pra compilar código: gcc lab02.c -o lab02 -lm
+
+
 #define VECTOR_SIZE 200000000
 
 // Função que simula uma carga de trabalho pesada
