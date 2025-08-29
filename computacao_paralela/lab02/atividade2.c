@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 
 //paralelizar este código
@@ -52,10 +55,6 @@ int main() {
     }
 
 
-    int last_start = (NUM_PROCESSOS - 1) * chunk_size;
-    int last_end = VECTOR_SIZE;
-    heavy_work(vector, last_start, last_end);
-
 
     for(int i = 0; i < NUM_PROCESSOS - 1; i++) {
         wait(NULL);
@@ -64,12 +63,12 @@ int main() {
 
     clock_gettime(CLOCK_MONOTONIC, &end);
 
-    double time_spent = (end.tv_sec - start.tv_sec) + 
+    double time_spent = (end.tv_sec - start.tv_sec) +
                         (end.tv_nsec - start.tv_nsec) / 1e9;
     
     printf("Versão paralela executou em %f segundos\n", time_spent);
 
-    double speed_up = 6.855270/time_spent;
+    double speed_up = 1.694201/time_spent;
     printf("Speed up foi de %f\n", speed_up);
 
     free(vector);
